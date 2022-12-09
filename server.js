@@ -1,6 +1,7 @@
 var express = require("express")
 var app = express()
-var cors = require("cors")
+var cors = require("cors");
+const { application } = require("express");
 let projectCollection;
 
 app.use(express.static(__dirname+'/public'))
@@ -58,6 +59,20 @@ app.get('/api/projects',(req,res) => {
         }
         else {
             res.json({statusCode: 200, message:"Success", data: result})
+        }
+    })
+})
+
+// api
+app.post('/api/projects',(req,res) => {
+    console.log("new project added", req.body)
+    var newProject = req.body;
+    insertProjects(newProject,(err,result) => {
+        if(err) {
+            res.json({statusCode: 400, message: err})
+        }
+        else {
+            res.json({statusCode: 200, message:"Successfully added", data: result})
         }
     })
 })

@@ -21,7 +21,21 @@ const submitForm = () => {
     formData.email = $('#description').val();
 
     console.log("Form Data Submitted: ", formData);
+    addProjectToApp(formData)
 }
+
+//ajax
+const addProjectToApp = (project) => (
+    $.ajax({
+        url: '/api/projects',
+        data: project,
+        type: 'PPOST',
+        success: (result) => {
+            alert(result.message);
+            location.reload();
+        }
+    })
+)
 
 const addCards = (items) => {
     items.forEach(item => {
