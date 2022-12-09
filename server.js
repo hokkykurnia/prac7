@@ -15,6 +15,10 @@ const MongoClient = require('mongodb').MongoClient;
 const uri = 'mongodb+srv:Hokky:Gardevoir1@applied-software-engine.izynvof.mongodb.net/?retryWrites=true&w=majority'
 const client = new MongoClient(uri, {useNeewUriParser: true})
 
+const insertProjects = (project,callback) => {
+    projectCollection.insert(project,callback);
+}
+
 const createCollection = (collectionName) => {
     client.connect((err,db) => {
         projectCollection = client.db().collection(collectionName);
@@ -42,17 +46,23 @@ const cardList = [
         desciption: "spanish surrealist painting"
     }
 ]
+
+const getProjects = (callback) => {
+    projectCollection.find({}).toArray(callback);
+}
+
 app.get('/api/projects',(req,res) => {
-    res.json({statusCode: 200, data: cardList, message:"Success"})
+    getProjects((err,result) => {
+        if(err) {
+            res.json({statusCode: 400, message: err})
+        }
+        else {
+            res.json({statusCode: 200, message:"Success", data: result})
+        }
+    })
 })
 
 var port = process.env.port || 3000;
-app.listen(port,()=>{
-    console.log("App listening to: "+port)
-})
-
-var port = process.env.port || 3000;
-
 app.listen(port,()=>{
     console.log("App listening to: http://localhost:"+port)
     createCollection('Art')

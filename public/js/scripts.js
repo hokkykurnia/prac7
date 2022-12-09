@@ -27,10 +27,10 @@ const clickMe = () => {
 
 const submitForm = () => {
     let formData = {};
-    formData.first_name = $('#first_name').val();
-    formData.last_name = $('#last_name').val();
-    formData.password = $('#password').val();
-    formData.email = $('#email').val();
+    formData.first_name = $('#title').val();
+    formData.last_name = $('#image').val();
+    formData.password = $('#link').val();
+    formData.email = $('#description').val();
 
     console.log("Form Data Submitted: ", formData);
 }
