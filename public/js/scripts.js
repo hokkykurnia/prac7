@@ -1,16 +1,4 @@
 const cardList = [
-    //{
-    //    title: "the great wave",
-    //    image: "images/the great wave off kanagawa.jpg",
-    //    link: "About the great wave",
-    //    desciption: "japanese painting of wave"
-    //},
-    //{
-    //    title: "the persistence of time",
-    //    image: "images/the persistence of time.jpg",
-    //    link: "About the persistence of time",
-    //    desciption: "spanish surrealist painting"
-    //}
 ]
 
 const getProjects = () => {
