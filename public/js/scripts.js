@@ -61,3 +61,9 @@ $(document).ready(function(){
     getProjects();
     $('.modal').modal();
   });
+
+  // connect to the socket​
+let socket = io();​
+socket.on('number', (msg) => {​
+    console.log('Random number: ' + msg);​
+})
